@@ -36,10 +36,12 @@ const Navbar = () => {
               <h2 className="text-xl font-semibold">
                 {user?.name.split(" ").slice(0, 2).join(" ")}
               </h2>
-              <Button className="bg-linear-to-r from-pink-600 to-red-600 rounded-lg">
-                <RiDashboardFill />
-                Dashboard
-              </Button>
+              <Link href="/dashboard">
+                <Button className="bg-linear-to-r from-pink-600 to-red-600 rounded-lg">
+                  <RiDashboardFill />
+                  Dashboard
+                </Button>
+              </Link>
             </>
           ) : (
             <>
@@ -78,10 +80,12 @@ const Navbar = () => {
                   <h2 className="text-xl text-center font-semibold">
                     {user?.name.split(" ").slice(0, 2).join(" ")}
                   </h2>
-                  <Button className="bg-linear-to-r from-pink-600 to-red-600 rounded-lg w-full">
-                    <RiDashboardFill />
-                    Dashboard
-                  </Button>
+                  <Link href={"/dashboard"}>
+                    <Button className="bg-linear-to-r from-pink-600 to-red-600 rounded-lg w-full">
+                      <RiDashboardFill />
+                      Dashboard
+                    </Button>
+                  </Link>
                 </>
               ) : (
                 <>

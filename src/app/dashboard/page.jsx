@@ -1,10 +1,16 @@
 import BloodCardManagement from "@/components/Dashboard/BloodCardManagement";
 import Profile from "@/components/Dashboard/Profile";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  const user = session?.user;
   return (
     <div className="container mx-auto max-w-4xl py-10 px-4 min-h-[70vh]">
-      <Profile />
+      <Profile user={user} />
       <BloodCardManagement />
     </div>
   );

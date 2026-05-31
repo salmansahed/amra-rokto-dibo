@@ -1,15 +1,9 @@
-import { auth } from "@/lib/auth";
 import { Card } from "@heroui/react";
-import { headers } from "next/headers";
 import Image from "next/image";
-import { FiEdit3, FiMail } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
 import EditProfileModal from "./EditProfileModal";
 
-const Profile = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  const user = session?.user;
+const Profile = async ({ user }) => {
   return (
     <div>
       <div className="relative overflow-hidden w-full rounded-3xl p-0.5 bg-linear-to-r from-pink-500/20 via-transparent to-indigo-500/20 shadow-xl mb-10">
@@ -18,8 +12,8 @@ const Profile = async () => {
             {/* Profile Picture */}
             <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-indigo-500/20 shadow-md">
               <Image
-                src={user.image}
-                alt={user.name}
+                src={user?.image}
+                alt={user?.name}
                 fill
                 className="object-cover rounded-2xl"
               />

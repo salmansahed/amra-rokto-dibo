@@ -2,6 +2,7 @@ import { Card } from "@heroui/react";
 import Image from "next/image";
 import { FiMail } from "react-icons/fi";
 import EditProfileModal from "./EditProfileModal";
+import LogoutBtn from "./LogoutBtn";
 
 const Profile = async ({ user }) => {
   return (
@@ -30,7 +31,10 @@ const Profile = async ({ user }) => {
           </div>
 
           {/* Profile Edit Button */}
-          <EditProfileModal user={user} />
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <EditProfileModal user={user} />
+            <LogoutBtn />
+          </div>
         </Card>
       </div>
     </div>

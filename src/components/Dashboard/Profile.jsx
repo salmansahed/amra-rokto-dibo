@@ -1,8 +1,9 @@
 import { auth } from "@/lib/auth";
-import { Button, Card } from "@heroui/react";
+import { Card } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
 import { FiEdit3, FiMail } from "react-icons/fi";
+import EditProfileModal from "./EditProfileModal";
 
 const Profile = async () => {
   const session = await auth.api.getSession({
@@ -35,10 +36,7 @@ const Profile = async () => {
           </div>
 
           {/* Profile Edit Button */}
-          <Button className="h-11 px-5 font-bold rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 shadow-xs transition-all active:scale-98">
-            <FiEdit3 className="size-4 text-indigo-500" />
-            Edit Profile
-          </Button>
+          <EditProfileModal user={user} />
         </Card>
       </div>
     </div>

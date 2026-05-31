@@ -33,7 +33,9 @@ const Navbar = () => {
             </>
           ) : user ? (
             <>
-              <h2>{user.name}</h2>
+              <h2 className="text-xl font-semibold">
+                {user?.name.split(" ").slice(0, 2).join(" ")}
+              </h2>
               <Button className="bg-linear-to-r from-pink-600 to-red-600 rounded-lg">
                 <RiDashboardFill />
                 Dashboard
@@ -73,8 +75,8 @@ const Navbar = () => {
                 </>
               ) : user ? (
                 <>
-                  <h2 className="text-2xl text-center font-semibold font">
-                    {user.name}
+                  <h2 className="text-xl text-center font-semibold">
+                    {user?.name.split(" ").slice(0, 2).join(" ")}
                   </h2>
                   <Button className="bg-linear-to-r from-pink-600 to-red-600 rounded-lg w-full">
                     <RiDashboardFill />

@@ -1,9 +1,10 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
-import { Button } from "@heroui/react";
+import { Button, AlertDialog } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { MdLogout } from "react-icons/md";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 
 const LogoutBtn = () => {
@@ -19,14 +20,46 @@ const LogoutBtn = () => {
   };
   return (
     <div>
-      <Button
-        onClick={handleLogoutBtn}
-        variant="danger"
-        className="h-11 px-5 font-bold rounded-xl shadow-xs active:scale-98"
-      >
-        Logout
-        <MdLogout />
-      </Button>
+      <AlertDialog>
+        <Button
+          variant="danger"
+          className="h-11 px-5 font-bold rounded-xl shadow-xs active:scale-98"
+        >
+          Logout
+          <MdLogout />
+        </Button>
+        <AlertDialog.Backdrop>
+          <AlertDialog.Container>
+            <AlertDialog.Dialog className="sm:max-w-100">
+              <AlertDialog.CloseTrigger />
+              <AlertDialog.Header>
+                <RiLogoutCircleRLine className="text-4xl bg-red-200 text-red-600 p-2 rounded-full" />
+                <AlertDialog.Heading>Logout?</AlertDialog.Heading>
+              </AlertDialog.Header>
+              <AlertDialog.Body>
+                <p>Are you sure you want to logout?</p>
+              </AlertDialog.Body>
+              <AlertDialog.Footer>
+                <Button
+                  slot="close"
+                  variant="danger-soft"
+                  className=" rounded-xl"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  slot="close"
+                  variant="danger"
+                  onClick={handleLogoutBtn}
+                  className=" rounded-xl"
+                >
+                  Logout
+                </Button>
+              </AlertDialog.Footer>
+            </AlertDialog.Dialog>
+          </AlertDialog.Container>
+        </AlertDialog.Backdrop>
+      </AlertDialog>
     </div>
   );
 };

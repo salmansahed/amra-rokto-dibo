@@ -1,7 +1,18 @@
+"use client";
+
 import { Label, SearchField, ListBox, Select } from "@heroui/react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const FilterSearch = ({ cardsData }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const currentSearch = searchParams.get("search") || "";
+  const currentBloodGroup = searchParams.get("bloodGroup") || "";
+
   const bloodGroups = [
+    { value: "", label: "All" },
     { value: "A+", label: "A+" },
     { value: "A-", label: "A-" },
     { value: "B+", label: "B+" },
@@ -11,6 +22,19 @@ const FilterSearch = ({ cardsData }) => {
     { value: "O+", label: "O+" },
     { value: "O-", label: "O-" },
   ];
+
+  const handleFilterChange = (key, value) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      params.set(key, value);
+    } else {
+      params.delete(key);
+    }
+
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   return (
     <div>
       <div className="flex items-center justify-center">
@@ -23,7 +47,12 @@ const FilterSearch = ({ cardsData }) => {
       </div>
       <div className="mb-8 max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
         {/* Search Field */}
-        <SearchField name="search" className="w-full sm:w-[70%]">
+        <SearchField
+          name="search"
+          value={currentSearch}
+          onChange={(value) => handleFilterChange("search", value)}
+          className="w-full sm:w-[70%]"
+        >
           <Label className="uppercase text-gray-600">Search Donor</Label>
           <SearchField.Group className="border w-full py-5 bg-gray-50 shadow-md border-black/20">
             <SearchField.SearchIcon />
@@ -33,7 +62,14 @@ const FilterSearch = ({ cardsData }) => {
         </SearchField>
 
         {/* Select Blood Group */}
-        <Select className="w-full sm:w-[30%]" placeholder="Select one">
+        <Select
+          selectedKey={currentBloodGroup}
+          onSelectionChange={(selected) =>
+            handleFilterChange("bloodGroup", selected)
+          }
+          className="w-full sm:w-[30%]"
+          placeholder="Select one"
+        >
           <Label className="uppercase text-gray-600">Blood Group</Label>
           <Select.Trigger className="border shadow-md py-3 text-red-500 bg-gray-50 border-black/20">
             <Select.Value />

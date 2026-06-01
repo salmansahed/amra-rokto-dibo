@@ -46,13 +46,13 @@ const Navbar = () => {
           ) : (
             <>
               <Link href="/registration">
-                <Button variant="outline" className="group">
+                <Button variant="outline" className="group rounded-lg">
                   <LuUserRoundPlus className="group-hover:scale-125 transition-all duration-300" />
                   Registration
                 </Button>
               </Link>
               <Link href="/login">
-                <Button className="bg-green-700 text-white hover:bg-green-800 transition-all duration-300 group">
+                <Button className="bg-red-500 rounded-lg transition-all duration-300 group">
                   <FaArrowRightToBracket className="group-hover:translate-x-2 transition-all duration-300" />
                   Login
                 </Button>
@@ -98,7 +98,7 @@ const Navbar = () => {
                     </Button>
                   </Link>
                   <Link href="/login">
-                    <Button className="bg-green-700 text-white hover:bg-green-800 transition-all duration-300 px-6 rounded-lg">
+                    <Button className="bg-red-600 text-white hover:bg-red-700 transition-all duration-300 px-6 rounded-lg">
                       Login
                     </Button>
                   </Link>

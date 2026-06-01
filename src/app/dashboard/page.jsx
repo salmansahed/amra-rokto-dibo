@@ -9,7 +9,7 @@ const DashboardPage = async () => {
   });
   const user = session?.user;
   return (
-    <div className="container mx-auto max-w-4xl py-10 px-4 min-h-[70vh]">
+    <div className="container mx-auto max-w-4xl pt-24 sm:pt-28 pb-14 px-4 min-h-[70vh]">
       <Profile user={user} />
       <BloodCardManagement user={user} />
     </div>

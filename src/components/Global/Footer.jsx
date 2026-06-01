@@ -121,16 +121,16 @@ const Footer = () => {
           <h3 className="text-white font-semibold text-lg mb-4 relative before:absolute before:bottom-0 before:left-0 before:w-8 before:h-0.5 before:bg-pink-600 pb-2">
             জরুরি যোগাযোগ
           </h3>
-          <ul className="space-y-3 text-sm text-slate-400">
-            <li className="flex items-center space-x-3">
+          <div className="space-y-3 text-sm text-slate-400">
+            <Link href={`tel:+8801614869602`} className="flex items-center space-x-3">
               <FaPhoneAlt className="text-pink-600 shrink-0" />
               <span>+8801614-869602</span>
-            </li>
-            <li className="flex items-center space-x-3">
+            </Link>
+            <Link href={`mailto:amraroktodibo@gmail.com`} className="flex items-center space-x-3">
               <FaEnvelope className="text-pink-600 shrink-0" />
               <span className="break-all">amraroktodibo@gmail.com</span>
-            </li>
-          </ul>
+            </Link>
+          </div>
         </div>
       </div>
 

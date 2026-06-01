@@ -1,7 +1,6 @@
 import { Label, SearchField, ListBox, Select } from "@heroui/react";
 
 const FilterSearch = ({ cardsData }) => {
-  console.log("Cards data in filter search =>", cardsData);
   const bloodGroups = [
     { value: "A+", label: "A+" },
     { value: "A-", label: "A-" },

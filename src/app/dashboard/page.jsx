@@ -11,7 +11,7 @@ const DashboardPage = async () => {
   return (
     <div className="container mx-auto max-w-4xl py-10 px-4 min-h-[70vh]">
       <Profile user={user} />
-      <BloodCardManagement />
+      <BloodCardManagement user={user} />
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import { Button, Card } from "@heroui/react";
 import { FiEdit3, FiPlusCircle } from "react-icons/fi";
 import BloodCard from "../Card/BloodCard";
+import AddBloodCardForm from "./AddBloodCardForm";
 
-const BloodCardManagement = () => {
-  const hasBloodCard = true;
+const BloodCardManagement = ({ user }) => {
+  const hasBloodCard = false;
 
   return (
     <div>
@@ -45,10 +46,7 @@ const BloodCardManagement = () => {
                 বিপদের সময় মানুষ আপনাকে খুঁজে পায়।
               </p>
             </div>
-            <Button className="h-11 px-6 font-bold text-white bg-linear-to-r from-pink-600 to-red-600 rounded-xl shadow-md hover:opacity-95 transition-all active:scale-98 flex items-center gap-2">
-              <FiPlusCircle className="size-4" />
-              Add Blood Card
-            </Button>
+            <AddBloodCardForm user={user} />
           </Card>
         )}
       </div>

@@ -53,18 +53,22 @@ const BloodCard = async ({ data }) => {
           <div className="flex items-center gap-2 w-full min-w-0">
             <FiPhone className="border rounded-xl text-gray-600 text-3xl p-1.5 shrink-0" />
             <div className="flex-1 overflow-x-auto scrollbar-none">
-              <p className="text-sm text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
-                {number}
-              </p>
+              <Link href={`tel:${number}`}>
+                <p className="text-sm text-zinc-700 dark:text-zinc-300 whitespace-nowrap hover:text-red-500 transition-all duration-200">
+                  {number}
+                </p>
+              </Link>
             </div>
           </div>
           {/* Alternative Phone */}
           <div className="flex items-center gap-2 w-full min-w-0">
             <FiPhone className="border rounded-xl text-gray-600 text-3xl p-1.5 shrink-0" />
             <div className="flex-1 overflow-x-auto scrollbar-none">
-              <p className="text-sm text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
-                {alternativeNumber}
-              </p>
+              <Link href={`tel:${alternativeNumber}`}>
+                <p className="text-sm text-zinc-700 dark:text-zinc-300 whitespace-nowrap hover:text-red-500 transition-all duration-200">
+                  {alternativeNumber}
+                </p>
+              </Link>
             </div>
             <p className="text-xs font-medium text-rose-500 bg-rose-50 dark:bg-rose-950/30 px-2 py-0.5 rounded-full shrink-0">
               Alternative

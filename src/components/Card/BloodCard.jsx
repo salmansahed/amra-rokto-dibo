@@ -1,18 +1,17 @@
-"use client";
-
 import { Button, Card } from "@heroui/react";
 import { FiPhone, FiMapPin, FiUser } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 
-const BloodCard = ({
-  photo = "/default-avatar.png",
-  name = "Salman Shahed",
-  number = "+880 1700-000000",
-  alternativeNumber = "+880 1900-000000",
-  bloodGroup = "O+",
-  address = "Mymensingh, Bangladesh",
-}) => {
+const BloodCard = async ({ data }) => {
+  const {
+    userName,
+    userimage,
+    bloodGroup,
+    number,
+    alternativeNumber,
+    address,
+  } = data;
   return (
     <div className="w-full  p-0.5 rounded-3xl bg-linear-to-br from-rose-500/20 via-transparent to-indigo-500/10 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-rose-500/10 dark:shadow-black/40">
       <Card className="p-5 md:p-6 rounded-3xl bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-100/80 dark:border-zinc-800/50 flex flex-col gap-5">
@@ -22,8 +21,8 @@ const BloodCard = ({
             {/* User Profile Image */}
             <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-rose-500/20 bg-zinc-100 dark:bg-zinc-800 shrink-0">
               <Image
-                src={photo}
-                alt={`${name}'s Profile`}
+                src={userimage}
+                alt={`${userName}'s Profile`}
                 fill
                 className="object-cover"
               />
@@ -32,7 +31,7 @@ const BloodCard = ({
             {/* Name and Role */}
             <div className="space-y-0.5">
               <h3 className="font-bold text-zinc-800 dark:text-zinc-100 text-base md:text-lg tracking-tight line-clamp-1">
-                {name}
+                {userName}
               </h3>
               <p className="text-xs font-medium text-rose-500 flex items-center gap-1 bg-rose-50 dark:bg-rose-950/30 px-2 py-0.5 rounded-full w-max">
                 <FiUser className="size-3" /> Blood Donor

@@ -7,6 +7,7 @@ import {
   FaPhoneAlt,
   FaEnvelope,
   FaHeart,
+  FaGithub,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -27,16 +28,16 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex space-x-4 pt-2">
             <Link
-              href="#"
+              href="https://www.facebook.com/salmansahedbd"
               className="p-2 bg-slate-800 hover:bg-pink-600 text-slate-300 hover:text-white rounded-full transition-colors duration-300"
             >
               <FaFacebook size={18} />
             </Link>
             <Link
-              href="#"
+              href="https://github.com/salmansahed"
               className="p-2 bg-slate-800 hover:bg-pink-600 text-slate-300 hover:text-white rounded-full transition-colors duration-300"
             >
-              <FaInstagram size={18} />
+              <FaGithub size={18} />
             </Link>
           </div>
         </div>
@@ -123,11 +124,11 @@ const Footer = () => {
           <ul className="space-y-3 text-sm text-slate-400">
             <li className="flex items-center space-x-3">
               <FaPhoneAlt className="text-pink-600 shrink-0" />
-              <span>+৮৮০ ১২৩৪-৫৬৭৮৯০</span>
+              <span>+8801614-869602</span>
             </li>
             <li className="flex items-center space-x-3">
               <FaEnvelope className="text-pink-600 shrink-0" />
-              <span className="break-all">support@amraroktodibo.com</span>
+              <span className="break-all">amraroktodibo@gmail.com</span>
             </li>
           </ul>
         </div>

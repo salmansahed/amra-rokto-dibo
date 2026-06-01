@@ -39,11 +39,31 @@ const EditProfileModal = ({ user }) => {
           image: imageUrlForDatabase,
         },
         {
-          onSuccess: () => {
-            toast.success("Profile updated successfully!", {
-              position: "top-center",
-            });
-            router.refresh();
+          onSuccess: async () => {
+            const res = await fetch(
+              `${process.env.NEXT_PUBLIC_SERVER_URL}/blood-cards/${user.id}`,
+              {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  userName: userData.name,
+                  userimage: imageUrlForDatabase,
+                }),
+              },
+            );
+            const data = await res.json();
+            if (data.modifiedCount > 0) {
+              toast.success("Profile updated successfully!", {
+                position: "top-center",
+              });
+              router.refresh();
+            }else(
+              toast.error("Profile update failed: No changes were made.", {
+                position: "top-center",
+              })
+            )
           },
           onError: (error) => {
             toast.error("Profile update failed: " + error.message, {

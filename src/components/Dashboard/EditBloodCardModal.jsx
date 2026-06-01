@@ -12,15 +12,14 @@ import {
   FieldError,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { FiPlusCircle } from "react-icons/fi";
+import { FiEdit3 } from "react-icons/fi";
 import { toast } from "react-toastify";
 
-const AddBloodCardForm = ({ user }) => {
+const EditBloodCardModal = ({ myBloodCard }) => {
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { id, image, name, email } = user;
+  const { bloodGroup, number, alternativeNumber, address, userId } =
+    myBloodCard;
   const bloodGroups = [
     { value: "A+", label: "A+" },
     { value: "A-", label: "A-" },
@@ -36,43 +35,35 @@ const AddBloodCardForm = ({ user }) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    const finalData = {
-      ...data,
-      userId: id,
-      userimage: image,
-      userName: name,
-      userEmail: email,
-    };
-
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/blood-cards`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/blood-cards/${userId}`,
       {
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(finalData),
+        body: JSON.stringify(data),
       },
     );
     const result = await res.json();
-    if (result.insertedId) {
-      toast.success("Blood card added successfully!", {
+    if (result.modifiedCount > 0) {
+      toast.success("Blood card updated successfully!", {
         position: "top-center",
       });
-      setIsModalOpen(false);
       router.refresh();
+    } else {
+      toast.error("No changes were made to the blood card.", {
+        position: "top-center",
+      });
     }
   };
 
   return (
     <div>
-      <Modal isOpen={isModalOpen} onOpenChange={setIsModalOpen}>
-        <Button
-          onClick={() => setIsModalOpen(true)}
-          className="h-11 px-6 font-bold text-white bg-linear-to-r from-pink-600 to-red-600 rounded-xl shadow-md hover:opacity-95 transition-all active:scale-98 flex items-center gap-2"
-        >
-          <FiPlusCircle className="size-4" />
-          Add Blood Card
+      <Modal>
+        <Button className="h-11 px-5 font-bold text-white bg-linear-to-r from-pink-600 to-red-600 rounded-xl shadow-md transition-all active:scale-98 flex items-center gap-2">
+          <FiEdit3 className="size-4" />
+          Edit Blood Card
         </Button>
         <Modal.Backdrop>
           <Modal.Container placement="auto">
@@ -80,12 +71,12 @@ const AddBloodCardForm = ({ user }) => {
               <Modal.CloseTrigger />
               <Modal.Header>
                 <Modal.Icon className="bg-red-200">
-                  <FaPlus className="text-red-600" />
+                  <FiEdit3 className="text-red-600" />
                 </Modal.Icon>
-                <Modal.Heading>Add Your Blood Card</Modal.Heading>
+                <Modal.Heading>Edit Your Blood Card</Modal.Heading>
                 <p className="mt-1.5 text-sm leading-5 text-muted">
-                  Provide your blood group and contact details to register as a
-                  donor. Your information can help save a life in an emergency.
+                  Update your blood group or contact details below to keep your
+                  donor profile accurate and reachable during an emergency.
                 </p>
               </Modal.Header>
               <Modal.Body className="p-6">
@@ -93,14 +84,13 @@ const AddBloodCardForm = ({ user }) => {
                   <form onSubmit={onSubmit} className="flex flex-col gap-4">
                     {/* Blood Group */}
                     <TextField
-                      isRequired
                       className="w-full"
                       type="text"
                       variant="secondary"
                     >
                       <Select
+                        defaultValue={bloodGroup}
                         name="bloodGroup"
-                        isRequired
                         className="w-full"
                         placeholder="Select Your Blood Group"
                       >
@@ -128,7 +118,7 @@ const AddBloodCardForm = ({ user }) => {
                     </TextField>
                     {/* Number */}
                     <TextField
-                      isRequired
+                      defaultValue={number}
                       name="number"
                       className="w-full"
                       variant="secondary"
@@ -150,7 +140,7 @@ const AddBloodCardForm = ({ user }) => {
                     </TextField>
                     {/* Alternative Number */}
                     <TextField
-                      isRequired
+                      defaultValue={alternativeNumber}
                       className="w-full"
                       name="alternativeNumber"
                       variant="secondary"
@@ -175,7 +165,7 @@ const AddBloodCardForm = ({ user }) => {
                     </TextField>
                     {/* Address */}
                     <TextField
-                      isRequired
+                      defaultValue={address}
                       className="w-full"
                       name="address"
                       variant="secondary"
@@ -194,11 +184,11 @@ const AddBloodCardForm = ({ user }) => {
                         Cancel
                       </Button>
                       <Button
-                        // slot="close"
+                        slot="close"
                         type="submit"
                         className="rounded-xl bg-linear-to-r from-pink-600 to-red-600"
                       >
-                        Add Card
+                        Update Card
                       </Button>
                     </Modal.Footer>
                   </form>
@@ -212,4 +202,4 @@ const AddBloodCardForm = ({ user }) => {
   );
 };
 
-export default AddBloodCardForm;
+export default EditBloodCardModal;

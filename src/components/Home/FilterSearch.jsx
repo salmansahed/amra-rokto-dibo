@@ -15,7 +15,7 @@ const FilterSearch = ({ cardsData }) => {
   return (
     <div>
       <div className="flex items-center justify-center">
-        <h2 className="text-base sm:text-lg mb-6 text-red-600 shadow-lg bg-red-100 border border-red-200 rounded-full px-4 py-1">
+        <h2 className="text-base sm:text-lg mt-14 mb-6 text-red-600 shadow-lg bg-red-100 border border-red-200 rounded-full px-4 py-1">
           Total Donor:{" "}
           <span className="bg-red-600 text-white rounded-full px-2 py-0.5">
             {cardsData?.length}

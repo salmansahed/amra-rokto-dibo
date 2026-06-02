@@ -17,7 +17,7 @@ const Navbar = () => {
   const user = session?.user;
   const pathname = usePathname();
   return (
-    <div className="py-2 sm:py-4 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+    <div className="py-2 sm:py-4 bg-white shadow-md fixed top-0 left-0 right-0 z-50 px-4">
       <div className="container mx-auto flex justify-between items-center px-3 sm:px-0">
         <div>
           <Link href="/">
@@ -27,7 +27,13 @@ const Navbar = () => {
             </h1>
           </Link>
         </div>
-        <div className="hidden sm:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-6">
+          <Link
+            href="/"
+            className={`${pathname === "/" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300`}
+          >
+            Home
+          </Link>
           <Link
             href="/about-us"
             className={`${pathname === "/about-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300`}
@@ -41,7 +47,7 @@ const Navbar = () => {
             Contact Us
           </Link>
         </div>
-        <div className="sm:flex items-center gap-4 hidden">
+        <div className="lg:flex items-center gap-4 hidden">
           {isPending ? (
             <>
               <div className="h-4 w-24 bg-red-200 rounded animate-pulse" />
@@ -77,7 +83,7 @@ const Navbar = () => {
           )}
         </div>
         {/* Mobile Menu Button */}
-        <div className="block sm:hidden">
+        <div className="block lg:hidden">
           <Hamburger
             size={25}
             toggled={isOpen}
@@ -85,57 +91,66 @@ const Navbar = () => {
             className="relative"
           />
           {isOpen && (
-            <div className="absolute border bg-red-200 rounded px-4 py-4 right-0 top-16 flex flex-col gap-3 w-full z-50">
-              <div className="flex flex-col items-center gap-3 border-b-2 pb-4 border-red-300">
-                <Link
-                  href="/about-us"
-                  className={`${pathname === "/about-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300 block`}
-                >
-                  About Us
-                </Link>
-                <Link
-                  href="/contact-us"
-                  className={`${pathname === "/contact-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300 block`}
-                >
-                  Contact Us
-                </Link>
-              </div>
+            <>
+              <div
+                onClick={() => setOpen(false)}
+                className="fixed top-17 inset-0 transition-all duration-300 cursor-pointer"
+              />
+              <div className="absolute border-2 bg-white border-red-300 rounded-lg px-4 py-4 shadow-2xl left-2 right-2 top-17 flex flex-col gap-3 z-50">
+                <div className="flex flex-col items-center gap-3 border-b-2 pb-4 border-red-300">
+                  <Link
+                    href="/"
+                    className={`${pathname === "/" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300 block`}
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    href="/about-us"
+                    className={`${pathname === "/about-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300 block`}
+                  >
+                    About Us
+                  </Link>
+                  <Link
+                    href="/contact-us"
+                    className={`${pathname === "/contact-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300 block`}
+                  >
+                    Contact Us
+                  </Link>
+                </div>
 
-              {isPending ? (
-                <>
-                  <div className="h-6 w-28 bg-gray-200 rounded animate-pulse mx-auto" />
-                  <div className="h-9 w-full bg-gray-200 rounded-lg animate-pulse" />
-                </>
-              ) : user ? (
-                <>
-                  <h2 className="text-xl text-center font-semibold">
-                    {user?.name.split(" ").slice(0, 2).join(" ")}
-                  </h2>
-                  <Link href={"/dashboard"}>
-                    <Button className="bg-linear-to-r from-pink-600 to-red-600 rounded-lg w-full">
-                      <RiDashboardFill />
-                      Dashboard
-                    </Button>
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link href={"/registration"}>
-                    <Button
-                      variant="outline"
-                      className="border-white bg-gray-200 px-6 rounded-lg"
-                    >
-                      Registration
-                    </Button>
-                  </Link>
-                  <Link href="/login">
-                    <Button className="bg-red-600 text-white hover:bg-red-700 transition-all duration-300 px-6 rounded-lg">
-                      Login
-                    </Button>
-                  </Link>
-                </>
-              )}
-            </div>
+                {isPending ? (
+                  <>
+                    <div className="h-6 w-28 bg-gray-200 rounded animate-pulse mx-auto" />
+                    <div className="h-9 w-full bg-gray-200 rounded-lg animate-pulse" />
+                  </>
+                ) : user ? (
+                  <>
+                    <h2 className="text-xl text-center font-semibold">
+                      {user?.name.split(" ").slice(0, 2).join(" ")}
+                    </h2>
+                    <Link href={"/dashboard"}>
+                      <Button className="bg-linear-to-r from-pink-600 to-red-600 rounded-lg w-full">
+                        <RiDashboardFill />
+                        Dashboard
+                      </Button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href={"/registration"}>
+                      <Button variant="ghost" className="w-full rounded-lg">
+                        Registration
+                      </Button>
+                    </Link>
+                    <Link href="/login">
+                      <Button className="bg-red-600 text-white w-full hover:bg-red-700 transition-all duration-300 px-6 rounded-lg">
+                        Login
+                      </Button>
+                    </Link>
+                  </>
+                )}
+              </div>
+            </>
           )}
         </div>
       </div>

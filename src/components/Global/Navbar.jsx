@@ -17,7 +17,7 @@ const Navbar = () => {
   const user = session?.user;
   const pathname = usePathname();
   return (
-    <div className="py-2 sm:py-4 bg-white shadow-md fixed top-0 left-0 right-0 z-50 px-4">
+    <div className="py-2 sm:py-4 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto flex justify-between items-center px-3 sm:px-0">
         <div>
           <Link href="/">

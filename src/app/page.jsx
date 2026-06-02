@@ -14,7 +14,6 @@ export default async function Home({ searchParams }) {
     },
   );
   const cardsData = await res.json();
-  console.log("Card Data =>", cardsData.length);
   return (
     <div className="container mx-auto px-3 pt-6 sm:pt-10 pb-12 sm:pb-16">
       <FilterSearch cardsData={cardsData} />

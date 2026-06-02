@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { Sling as Hamburger } from "hamburger-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BiSolidDonateBlood } from "react-icons/bi";
 import { FaArrowRightToBracket } from "react-icons/fa6";
@@ -14,6 +15,7 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
+  const pathname = usePathname();
   return (
     <div className="py-2 sm:py-4 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto flex justify-between items-center px-3 sm:px-0">
@@ -23,6 +25,20 @@ const Navbar = () => {
               Amra Rokto Dibo{" "}
               <BiSolidDonateBlood className="text-red-500 text-2xl" />
             </h1>
+          </Link>
+        </div>
+        <div className="hidden sm:flex items-center gap-6">
+          <Link
+            href="/about-us"
+            className={`${pathname === "/about-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300`}
+          >
+            About Us
+          </Link>
+          <Link
+            href="/contact-us"
+            className={`${pathname === "/contact-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300`}
+          >
+            Contact Us
           </Link>
         </div>
         <div className="sm:flex items-center gap-4 hidden">
@@ -70,6 +86,21 @@ const Navbar = () => {
           />
           {isOpen && (
             <div className="absolute border bg-red-200 rounded px-4 py-4 right-0 top-16 flex flex-col gap-3 w-full z-50">
+              <div className="flex flex-col items-center gap-3 border-b-2 pb-4 border-red-300">
+                <Link
+                  href="/about-us"
+                  className={`${pathname === "/about-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300 block`}
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="/contact-us"
+                  className={`${pathname === "/contact-us" ? "underline underline-offset-4 decoration-red-500" : "text-gray-700"} hover:text-red-500 transition-colors duration-300 block`}
+                >
+                  Contact Us
+                </Link>
+              </div>
+
               {isPending ? (
                 <>
                   <div className="h-6 w-28 bg-gray-200 rounded animate-pulse mx-auto" />

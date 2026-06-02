@@ -50,7 +50,7 @@ const Footer = () => {
           <ul className="space-y-2.5 text-sm">
             <li>
               <Link
-                href="#"
+                href="/contact-us"
                 className="hover:text-pink-500 transition-colors duration-200 block"
               >
                 রক্তের অনুরোধ করুন
@@ -58,7 +58,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="#"
+                href="/"
                 className="hover:text-pink-500 transition-colors duration-200 block"
               >
                 রক্তদাতা খুঁজুন
@@ -66,7 +66,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="#"
+                href="/about-us"
                 className="hover:text-pink-500 transition-colors duration-200 block"
               >
                 আমাদের সম্পর্কে
@@ -74,7 +74,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="#"
+                href="/contact-us"
                 className="hover:text-pink-500 transition-colors duration-200 block"
               >
                 যোগাযোগ করুন
@@ -124,11 +124,11 @@ const Footer = () => {
           <div className="space-y-3 text-sm text-slate-400">
             <Link href={`tel:+8801614869602`} className="flex items-center space-x-3">
               <FaPhoneAlt className="text-pink-600 shrink-0" />
-              <span>+8801614-869602</span>
+              <span className="break-all hover:text-red-400 transition-all">+8801614-869602</span>
             </Link>
             <Link href={`mailto:amraroktodibo@gmail.com`} className="flex items-center space-x-3">
               <FaEnvelope className="text-pink-600 shrink-0" />
-              <span className="break-all">amraroktodibo@gmail.com</span>
+              <span className="break-all hover:text-red-400 transition-all">amraroktodibo@gmail.com</span>
             </Link>
           </div>
         </div>

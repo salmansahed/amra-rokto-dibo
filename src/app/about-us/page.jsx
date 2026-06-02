@@ -88,8 +88,8 @@ const AboutUs = () => {
           <div className="lg:col-span-6 rounded-[32px] bg-red-50 p-6 sm:p-8 border border-red-100 backdrop-blur-md">
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                { count: "1000+", label: "Registered Donors" },
-                { count: "500+", label: "Successful Donations" },
+                { count: "100+", label: "Registered Donors" },
+                { count: "50+", label: "Successful Donations" },
                 { count: "24/7", label: "Emergency Support" },
                 { count: "100%", label: "Community Driven" },
               ].map((stat, i) => (

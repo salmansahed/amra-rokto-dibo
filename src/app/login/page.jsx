@@ -1,3 +1,17 @@
+export const metadata = {
+  title: "Login",
+  description:
+    "Log in to your Amra Rokto Dibo account to manage your donor profile or post an emergency blood request.",
+  alternates: { canonical: "/login" },
+  openGraph: {
+    title: "Login | Amra Rokto Dibo",
+    description:
+      "Access your dashboard to update blood availability or manage emergency donation requests.",
+    url: "/login",
+    images: [{ url: "/og-image.png", width: 1230, height: 630 }],
+  },
+};
+
 import LoginForm from "@/components/Auth/LoginForm";
 
 const LoginPage = () => {

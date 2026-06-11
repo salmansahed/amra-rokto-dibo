@@ -1,3 +1,51 @@
+export const metadata = {
+  title: "About Us",
+  description:
+    "Official web application of Amra Rokto Dibo (ARD). Learn about our mission, vision, and how we are building Bangladesh's most trusted voluntary blood donor network to save lives.",
+
+  keywords: [
+    "About Amra Rokto Dibo",
+    "Amra Rokto Dibo About",
+    "Amra Rokto Dibo About Page",
+    "Amra Rokto Dibo About-Us Page",
+    "ARD Mission and Vision",
+    "Blood Donation Volunteers Bangladesh",
+    "Salman Sahed",
+    "Blood Platform Creators",
+    "Voluntary Healthcare Initiative",
+  ],
+
+  alternates: {
+    canonical: "/about-us",
+  },
+
+  openGraph: {
+    title: "About Us | Amra Rokto Dibo",
+    description:
+      "Discover the story behind Amra Rokto Dibo (ARD) — our mission to eliminate blood scarcity in Bangladesh and how we connect donors with families in need.",
+    url: "/about-us",
+    siteName: "Amra Rokto Dibo",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1230,
+        height: 630,
+        alt: "About Amra Rokto Dibo - Voluntary Blood Donation Platform",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | Amra Rokto Dibo",
+    description:
+      "Discover the story behind Amra Rokto Dibo (ARD) — our mission to eliminate blood scarcity in Bangladesh.",
+    images: ["/og-image.png"],
+  },
+};
+
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import {

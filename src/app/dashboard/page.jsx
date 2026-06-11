@@ -1,3 +1,14 @@
+export const metadata = {
+  title: "Dashboard",
+  description:
+    "Manage your blood donation profile, track your requests, and view donation history on Amra Rokto Dibo.",
+  alternates: { canonical: "/dashboard" },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 import BloodCardManagement from "@/components/Dashboard/BloodCardManagement";
 import Profile from "@/components/Dashboard/Profile";
 import { auth } from "@/lib/auth";
